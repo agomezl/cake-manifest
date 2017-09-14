@@ -3,12 +3,12 @@
     <!-- Remotes: name repository sources
     These can be relative paths, e.g. ../user_or_org ../agomezl
     or any other URI, e.g. https://android.googlesource.com/ -->
-    <remote fetch="../CakeML" name="cake"/>
-    <remote fetch="../polyml" name="poly"/>
-    <remote fetch="../HOL-Theorem-Prover" name="hol"/>
+    <remote fetch="ssh://git@github.com/CakeML/" name="cake"/>
+    <remote fetch="ssh://git@github.com/polyml/" name="poly"/>
+    <remote fetch="ssh://git@github.com/HOL-Theorem-Prover/" name="hol"/>
     <default remote="cake"  revision="master"/>
 
-    <project name="cakeml"               revision="9619a74b552c352bdeea4602f36ccb189da57b42"/>
-    <project name="hol"    remote="hol"  revision="f3b969dea89459e9947bf3683e1bcb099e01ddd3"/>
-    <project name="polyml" remote="poly" revision="v5.6"/>
+    <project name="cakeml"               revision="master"/>
+    <project name="hol"    remote="hol"  revision="master"/>
+    <project name="polyml" remote="poly" revision="refs/tags/v5.6"/>
 </manifest>
