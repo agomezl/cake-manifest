@@ -6,7 +6,7 @@
     <remote fetch="ssh://git@github.com/CakeML/" name="cake"/>
     <remote fetch="ssh://git@github.com/polyml/" name="poly"/>
     <remote fetch="ssh://git@github.com/HOL-Theorem-Prover/" name="hol"/>
-    <default remote="cake"  revision="master"/>
+    <default remote="cake"  revision="master" pushurl="no_url"/>
 
     <project name="cakeml"               revision="master"/>
     <project name="hol"    remote="hol"  revision="master"/>
