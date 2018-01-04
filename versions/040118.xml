@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="ssh://git@github.com/CakeML/" name="cake" pushurl="no_url"/>
+  <remote fetch="ssh://git@github.com/HOL-Theorem-Prover/" name="hol" pushurl="no_url"/>
+  <remote fetch="ssh://git@github.com/polyml/" name="poly"/>
+  
+  <default remote="cake" revision="master"/>
+  
+  <project name="cakeml" revision="d8878553de0ec15561266908b27abe11f30b3c63" upstream="master"/>
+  <project name="hol" remote="hol" revision="b93b624d765f8d26e8f1c2c56d4e913ec401461e" upstream="master"/>
+  <project name="polyml" remote="poly" revision="096d446e45fb88dd6dae7e62f2f06d03eedf524a" upstream="refs/tags/v5.7"/>
+</manifest>
