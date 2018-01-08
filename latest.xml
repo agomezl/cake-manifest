@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote fetch="ssh://git@github.com/CakeML/" name="cake" pushurl="no_url"/>
-  <remote fetch="ssh://git@github.com/HOL-Theorem-Prover/" name="hol" pushurl="no_url"/>
-  <remote fetch="ssh://git@github.com/polyml/" name="poly"/>
-  
+  <remote fetch="../CakeML/" name="cake" pushurl="no_url"/>
+  <remote fetch="../HOL-Theorem-Prover/" name="hol" pushurl="no_url"/>
+  <remote fetch="../polyml/" name="poly"/>
+
   <default remote="cake" revision="master"/>
   
   <project name="cakeml" revision="d8878553de0ec15561266908b27abe11f30b3c63" upstream="master"/>
