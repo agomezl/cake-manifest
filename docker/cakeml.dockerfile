@@ -23,7 +23,7 @@ RUN mkdir -p .local/bin && \
     curl ${REPO_URL} > ~/.local/bin/repo && \
     chmod a+x ~/.local/bin/repo
 
-ENV PATH ${HOME}/.local/bin/:${HOME}/HOL/bin/:${POLYML_DIR}/bin/:${PATH}
+ENV PATH ${HOME}/.local/bin/:${HOME}/hol/bin/:${POLYML_DIR}/bin/:${PATH}
 
 RUN repo init \
     -m master.xml \
@@ -35,8 +35,7 @@ RUN repo init \
 
 RUN cd polyml && \
     ./configure --prefix=${POLYML_DIR} && \
-    make && make compiler && make install && \
-    cd .. && rm -fr polyml
+    make && make compiler && make install
 
 RUN cd hol && \
     poly < tools/smart-configure.sml && \
@@ -65,10 +64,10 @@ RUN useradd -ms /bin/bash ${USER} && \
 USER agomezl
 WORKDIR ${HOME}
 
-RUN mkdir -p ${POLYML_DIR} ${HOME}/HOL ${HOME}/cakeml
+RUN mkdir -p ${POLYML_DIR} ${HOME}/hol ${HOME}/cakeml
 COPY --from=builder --chown=agomezl ${POLYML_DIR} ${POLYML_DIR}/
 ENV PATH ${POLYML_DIR}/bin/:${PATH}
-COPY --from=builder --chown=agomezl ${HOME}/HOL ${HOME}/HOL/
+COPY --from=builder --chown=agomezl ${HOME}/hol ${HOME}/hol/
 ENV PATH ${HOME}/HOL/bin/:${PATH}
 COPY --from=builder --chown=agomezl ${HOME}/cakeml ${HOME}/cakeml/
 COPY --from=builder --chown=agomezl ${HOME}/latest.xml ${HOME}/latest.xml
