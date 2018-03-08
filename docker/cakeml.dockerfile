@@ -6,8 +6,8 @@ ARG HOME=/home/${USER}
 ARG POLYML_DIR=${HOME}/opt/polyml
 ARG REPO_URL=https://storage.googleapis.com/git-repo-downloads/repo
 ARG CAKEML_REPO=https://github.com/agomezl/cake-manifest.git
-ARG CAKEML_REPO_BRANCH=master
-ARG CAKEML_MANIFEST=master.xml
+ARG CAKEML_REPO_BRANCH=devel
+ARG CAKEML_MANIFEST=devel.xml
 
 # basic stuff
 RUN dnf -y group install 'Development Tools'
@@ -33,9 +33,7 @@ RUN repo init \
     --manifest-name=${CAKEML_MANIFEST} \
     --manifest-branch=${CAKEML_REPO_BRANCH} \
     --manifest-url=${CAKEML_REPO} \
-    --repo-url=https://gerrit.googlesource.com/git-repo \
-    --no-clone-bundle \
-    --depth=1 && \
+    --repo-url=https://gerrit.googlesource.com/git-repo && \
 
      repo sync
 

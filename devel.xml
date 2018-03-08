@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="../CakeML/" name="cake" pushurl="no_url"/>
+  <remote fetch="../HOL-Theorem-Prover/" name="hol" pushurl="no_url"/>
+  <remote fetch="../polyml/" name="poly"/>
+
+  <default remote="cake"/>
+
+  <project name="cakeml" revision="version2"/>
+  <project name="hol" remote="hol" revision="9e6b0a9f05f204f50ab78e1d8023c05918a10497" upstream="master"/>
+  <project name="polyml" remote="poly" revision="096d446e45fb88dd6dae7e62f2f06d03eedf524a" upstream="refs/tags/v5.7"/>
+</manifest>
