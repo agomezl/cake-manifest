@@ -5,6 +5,9 @@ ARG USER=agomezl
 ARG HOME=/home/${USER}
 ARG POLYML_DIR=${HOME}/opt/polyml
 ARG REPO_URL=https://storage.googleapis.com/git-repo-downloads/repo
+ARG CAKEML_REPO=https://github.com/agomezl/cake-manifest.git
+ARG CAKEML_REPO_BRANCH=master
+ARG CAKEML_MANIFEST=master.xml
 
 # basic stuff
 RUN dnf -y group install 'Development Tools'
@@ -26,11 +29,13 @@ RUN mkdir -p .local/bin && \
 ENV PATH ${HOME}/.local/bin/:${HOME}/hol/bin/:${POLYML_DIR}/bin/:${PATH}
 
 RUN repo init \
-    -m master.xml \
+    --manifest-name=${CAKEML_MANIFEST} \
+    --manifest-branch=${CAKEML_REPO_BRANCH} \
+    --manifest-url=${CAKEML_REPO} \
     --repo-url=https://gerrit.googlesource.com/git-repo \
     --no-clone-bundle \
-    --depth=1 \
-    -u https://github.com/agomezl/cake-manifest.git && \
+    --depth=1 && \
+
      repo sync
 
 RUN cd polyml && \
@@ -68,6 +73,6 @@ RUN mkdir -p ${POLYML_DIR} ${HOME}/hol ${HOME}/cakeml
 COPY --from=builder --chown=agomezl ${POLYML_DIR} ${POLYML_DIR}/
 ENV PATH ${POLYML_DIR}/bin/:${PATH}
 COPY --from=builder --chown=agomezl ${HOME}/hol ${HOME}/hol/
-ENV PATH ${HOME}/HOL/bin/:${PATH}
+ENV PATH ${HOME}/hol/bin/:${PATH}
 COPY --from=builder --chown=agomezl ${HOME}/cakeml ${HOME}/cakeml/
 COPY --from=builder --chown=agomezl ${HOME}/latest.xml ${HOME}/latest.xml
