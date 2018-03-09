@@ -27,6 +27,7 @@ RUN mkdir -p .local/bin && \
     chmod a+x ~/.local/bin/repo
 
 ENV PATH ${HOME}/.local/bin/:${HOME}/hol/bin/:${POLYML_DIR}/bin/:${PATH}
+ENV HOLDIR ${HOME}/hol
 
 RUN repo init \
     --manifest-name=${CAKEML_MANIFEST} \
