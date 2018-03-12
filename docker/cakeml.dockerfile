@@ -36,7 +36,6 @@ RUN repo init \
     --repo-url=https://gerrit.googlesource.com/git-repo \
     --no-clone-bundle \
     --depth=1 && \
-
      repo sync
 
 RUN cd polyml && \
