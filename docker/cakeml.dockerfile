@@ -1,7 +1,7 @@
 FROM fedora:25 as builder
 
 # arguments
-ARG USER=agomezl
+ARG USER=cake
 ARG HOME=/home/${USER}
 ARG POLYML_DIR=${HOME}/opt/polyml
 ARG REPO_URL=https://storage.googleapis.com/git-repo-downloads/repo
@@ -19,7 +19,7 @@ RUN useradd -ms /bin/bash ${USER} && \
     usermod -a -G wheel ${USER} && \
     echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-USER agomezl
+USER ${USER}
 WORKDIR ${HOME}
 
 RUN mkdir -p .local/bin && \
@@ -54,7 +54,7 @@ RUN repo manifest -r > latest.xml
 FROM fedora:25
 
 # arguments
-ARG USER=agomezl
+ARG USER=cake
 ARG HOME=/home/${USER}
 ARG POLYML_DIR=${HOME}/opt/polyml
 
@@ -66,13 +66,13 @@ RUN useradd -ms /bin/bash ${USER} && \
     usermod -a -G wheel ${USER} && \
     echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-USER agomezl
+USER ${USER}
 WORKDIR ${HOME}
 
 RUN mkdir -p ${POLYML_DIR} ${HOME}/hol ${HOME}/cakeml
-COPY --from=builder --chown=agomezl ${POLYML_DIR} ${POLYML_DIR}/
+COPY --from=builder --chown=${USER} ${POLYML_DIR} ${POLYML_DIR}/
 ENV PATH ${POLYML_DIR}/bin/:${PATH}
-COPY --from=builder --chown=agomezl ${HOME}/hol ${HOME}/hol/
+COPY --from=builder --chown=${USER} ${HOME}/hol ${HOME}/hol/
 ENV PATH ${HOME}/hol/bin/:${PATH}
-COPY --from=builder --chown=agomezl ${HOME}/cakeml ${HOME}/cakeml/
-COPY --from=builder --chown=agomezl ${HOME}/latest.xml ${HOME}/latest.xml
+COPY --from=builder --chown=${USER} ${HOME}/cakeml ${HOME}/cakeml/
+COPY --from=builder --chown=${USER} ${HOME}/latest.xml ${HOME}/latest.xml
