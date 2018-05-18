@@ -70,9 +70,9 @@ USER ${USER}
 WORKDIR ${HOME}
 
 RUN mkdir -p ${POLYML_DIR} ${HOME}/hol ${HOME}/cakeml
-COPY --from=builder --chown=${USER} ${POLYML_DIR} ${POLYML_DIR}/
+COPY --from=builder --chown=cake ${POLYML_DIR} ${POLYML_DIR}/
 ENV PATH ${POLYML_DIR}/bin/:${PATH}
-COPY --from=builder --chown=${USER} ${HOME}/hol ${HOME}/hol/
+COPY --from=builder --chown=cake ${HOME}/hol ${HOME}/hol/
 ENV PATH ${HOME}/hol/bin/:${PATH}
-COPY --from=builder --chown=${USER} ${HOME}/cakeml ${HOME}/cakeml/
-COPY --from=builder --chown=${USER} ${HOME}/latest.xml ${HOME}/latest.xml
+COPY --from=builder --chown=cake ${HOME}/cakeml ${HOME}/cakeml/
+COPY --from=builder --chown=cake ${HOME}/latest.xml ${HOME}/latest.xml
