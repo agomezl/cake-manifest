@@ -10,9 +10,9 @@ cd "$(dirname -- "${0}")"
 
 set -e
 
-docker build -t ${DOCKERHUB_TAG} -f cakeml.dockerfile .
 docker kill cakeml-reg || true
 docker rm   cakeml-reg || true
+docker build -t ${DOCKERHUB_TAG} -f cakeml.dockerfile .
 docker run --name cakeml-reg ${DOCKERHUB_TAG} true
 docker cp cakeml-reg:/home/cake/latest.xml ../latest.xml
 docker cp cakeml-reg:/home/cake/latest.xml ../versions/${BUILD_DATE}.xml
