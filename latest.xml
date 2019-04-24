@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote fetch="../CakeML/" name="cake" pushurl="no_url"/>
-  <remote fetch="../HOL-Theorem-Prover/" name="hol" pushurl="no_url"/>
-  <remote fetch="../polyml/" name="poly"/>
-  
-  <default remote="cake" revision="master"/>
-  
-  <project name="cakeml" revision="910722143cb157b627cd6d21db74c26607142fdf" upstream="master"/>
-  <project name="hol" remote="hol" revision="741148f614f5435da2a53e84dedd0c7a5e33d6d4" upstream="master"/>
-  <project name="polyml" remote="poly" revision="096d446e45fb88dd6dae7e62f2f06d03eedf524a" upstream="refs/tags/v5.7"/>
+    <remote fetch="../CakeML/" pushurl="no_url" name="cake"/>
+    <remote fetch="../polyml/"  name="poly"/>
+    <remote fetch="../HOL-Theorem-Prover/" pushurl="no_url" name="hol"/>
+    <default remote="cake"  revision="master"/>
+
+    <project name="cakeml"               revision="ccd4671556758a3ad5ce925a7688e8618e915248"/>
+    <project name="hol"    remote="hol"  revision="057a3046e41b50db616e5d385e9b63e940b4957e"/>
+    <project name="polyml" remote="poly" revision="44b7b88e1a46757dfcddaab0166ca86c7024f198"/>
 </manifest>
